@@ -42,6 +42,13 @@
     font-style: normal;
 }
 
+/********************************
+			Custom property
+*********************************/
+/* root is like the root of your html document - it means this property is available to your whole css document ( it has global scope) */
+:root {
+	--mud-brown:#542401;
+}
 
 /********************************
 			Main
@@ -77,3 +84,68 @@ footer{
 /********************************
 	Special (added in class)
 ********************************/
+
+main {
+	/* subtract the value of the padding width from the width of our element */
+	width: calc(960px - 90px);
+	margin: auto;
+	background-image: url(../images/corkback.jpg);
+	background-repeat: repeat;
+	/* three values mean top, left-right, bottom */
+	padding: 25px 45px 45px;
+	/* set the border for all the sides, then override it by just changing the top */
+	border: 25px solid #542401;
+	border-top-width: 55px;
+	border-radius: 25px;
+	/* in box shadow, the properties are:
+		type
+		x offset
+		y offset 
+		length (for size)
+		colour */
+	box-shadow: 5px 5px 10px black, inset 3px 3px 7px black;
+}
+
+/* ***********************************************
+				drop down
+**************************************************/
+
+nav {
+	font-size: 2em;
+	/* use the negative margin to pull this element up into the border */
+	margin: -65px 0 25px;
+}
+
+/* using the direct child selector > to select only the ul that is a direct child */
+nav > ul {
+	display: flex;
+	justify-content: flex-end;
+}
+
+nav > ul > li {
+	padding: 0 10px;
+	position: relative; /* so it will hold the absolutely positioned dropdown */
+}
+
+nav ul li ul {
+	display: none;
+}
+
+nav a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* make the drop down appear when you hover over the nav item */
+nav > ul > li:hover ul {
+	display: block;
+	position: absolute;
+	background-color: var(--mud-brown)
+}
+
+/* add some spacing for the drop down links */
+nav ul li ul a {
+	/* line-height is defined based on the size of the font, where 1 is 100% of the font size */
+	line-height: 1.5;
+}
